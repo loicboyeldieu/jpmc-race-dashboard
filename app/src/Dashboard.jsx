@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react'
-import { Space, Select, Tooltip } from 'antd'
+import { Space, Select, Tooltip, Spin } from 'antd'
 import SearchPanel from './components/SearchPanel'
 import EventTags from './components/EventTags'
 import SelectedParticipants from './components/SelectedParticipants'
@@ -29,11 +29,19 @@ export default function Dashboard() {
   const [companyFilter, setCompanyFilter] = useState(undefined)
   const [genderFilter, setGenderFilter] = useState(undefined)
   const [ageFilter, setAgeFilter] = useState([])
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
+    setLoading(true)
     fetchResultRows()
-      .then(setParticipantRows)
-      .catch(() => setParticipantRows([]))
+      .then((rows) => {
+        setParticipantRows(rows)
+        setLoading(false)
+      })
+      .catch(() => {
+        setParticipantRows([])
+        setLoading(false)
+      })
   }, [])
 
   const companyOptions = useMemo(() => {
@@ -212,7 +220,13 @@ export default function Dashboard() {
           />
 
           <div className="chart-wrapper">
-            <PerformanceChart values={timingValues} selectedParticipants={selectedParticipants} xMin={chartBounds.xMin} xMax={chartBounds.xMax} />
+            {loading ? (
+              <div className="chart-loading">
+                <Spin size="large" />
+              </div>
+            ) : (
+              <PerformanceChart values={timingValues} selectedParticipants={selectedParticipants} xMin={chartBounds.xMin} xMax={chartBounds.xMax} />
+            )}
           </div>
         </main>
 
