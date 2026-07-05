@@ -226,19 +226,63 @@ body{
 @media (max-width: 768px) {
   body {
     overflow: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   .container{
     height: auto;
     min-height: 100vh;
     margin:0;
-    padding:16px;
+    padding:12px;
     overflow: visible;
   }
 
   .app-shell {
     height: auto;
     min-height: 0;
+  }
+
+  .hero {
+    gap: 8px;
+    margin-bottom: 8px;
+    padding: 0 4px;
+  }
+
+  .hero-text h1{
+    font-size: 1.5rem;
+    letter-spacing: -0.03em;
+    margin-bottom: 6px;
+  }
+
+  .hero-text .lead {
+    font-size: 0.82rem;
+    line-height: 1.5;
+    margin-bottom: 8px;
+  }
+
+  .event-tags {
+    margin: 8px 0;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+  }
+
+  .hero-actions .ant-space-item {
+    width: 100% !important;
+  }
+
+  .search-row {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .search-item {
+    min-width: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
   }
 
   .main-content {
@@ -248,25 +292,22 @@ body{
 
   .chart-wrapper {
     flex: none;
-    height: 400px;
+    height: 300px;
     overflow: visible;
   }
 
-  .hero-text h1{
-    font-size:2.25rem;
+  .chart-root > div {
+    position: static !important;
+    height: 300px !important;
   }
 
-  .hero-actions {
-    flex-direction: column;
-    align-items: stretch;
+  .participant-tags {
+    min-height: 32px;
+    padding: 8px 0;
   }
 
-  .search-row {
-    max-width: 100%;
-  }
-
-  .search-item {
-    min-width: 0 !important;
-    max-width: 100% !important;
+  .app-footer {
+    padding: 12px 8px 16px;
+    font-size: 0.65rem;
   }
 }

@@ -155,13 +155,20 @@ export default function PerformanceChart({ values, selectedParticipants, xMin, x
       rules: [{
         condition: { maxWidth: 768 },
         chartOptions: {
-          chart: { height: 320 },
+          chart: { height: 280, spacingTop: 8, spacingRight: 8, spacingBottom: 8, spacingLeft: 8 },
           xAxis: {
-            labels: { rotation: 45, y: 16 },
-            title: { margin: 16 },
+            labels: { rotation: 45, y: 12, style: { fontSize: '0.65rem' } },
+            title: { margin: 8, style: { fontSize: '0.7rem' } },
+            tickLength: 3,
           },
           yAxis: {
-            title: { margin: 24, style: { fontSize: '0.7rem' } },
+            title: { margin: 8, style: { fontSize: '0.65rem' } },
+            labels: { style: { fontSize: '0.65rem' } },
+          },
+          plotOptions: {
+            areaspline: {
+              lineWidth: 1.5,
+            },
           },
         },
       }],
