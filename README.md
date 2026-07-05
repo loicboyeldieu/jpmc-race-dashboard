@@ -1,31 +1,27 @@
-# JP Morgan Performance Distribution Dashboard
+# JP Morgan Race Runners Distribution
 
-This is a small dashboard that visualises finish-time distribution for the JP Morgan race and lets you search for a runner to see where they lie in the distribution.
+A dashboard that visualises finish-time distribution for the JP Morgan corporate race in London (2026) and lets you search for runners, compare colleagues, and discover where you stand.
 
-Quick start
+**Live demo:** [https://jpmc-race-dashboard.onrender.com](https://jpmc-race-dashboard.onrender.com)
 
-1. Install dependencies:
+---
+
+## Quick start
 
 ```bash
 npm install
-```
-
-2. Run the server and open the app:
-
-```bash
 npm start
 # then open http://localhost:3000
 ```
 
-Development (React + Vite)
-
-Start the React dev server (Vite) for rapid frontend development:
+## Development (React + Vite)
 
 ```bash
 npm run dev
+# Vite dev server with HMR on http://localhost:5174
 ```
 
-Build for production (output to `app/dist`) and serve with the existing Express server:
+## Production build
 
 ```bash
 npm run build
@@ -33,9 +29,17 @@ npm start
 # then open http://localhost:3000
 ```
 
-Notes
-- Frontend source lives in the `app` folder.
-- Backend entrypoint is `server/server.js`.
-- Raw race JSON files are stored under `data/jp_results_2026`.
-- The `data` folder also contains the downloader script.
-- The app serves a static frontend at `/` and an API at `/api/results`.
+## Project structure
+
+- `app/` — Frontend source (React + Vite)
+- `server/server.js` — Express API server
+- `data/jp_results_2026/` — Raw race JSON results
+- `data/scoring_results_downloader.py` — Data download script
+
+---
+
+## Disclaimer
+
+This is an independent project and is not affiliated with, endorsed by, or associated with JPMorgan Chase & Co. The data used is from publicly available race results. This project is for educational and informational purposes only.
+
+Built by [Loïc Boyeldieu](https://github.com/loicboyeldieu) — 2026

@@ -215,6 +215,14 @@ export default function Dashboard() {
             <PerformanceChart values={timingValues} selectedParticipants={selectedParticipants} xMin={chartBounds.xMin} xMax={chartBounds.xMax} />
           </div>
         </main>
+
+        <footer className="app-footer">
+          <p>
+            This is an independent project and is not affiliated with, endorsed by, or associated with
+            JPMorgan Chase & Co. The data used is from publicly available race results.
+          </p>
+          <p className="footer-credit">Built by Loïc Boyeldieu &mdash; {new Date().getFullYear()}</p>
+        </footer>
       </div>
     </div>
   )
