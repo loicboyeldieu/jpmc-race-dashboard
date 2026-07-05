@@ -151,6 +151,21 @@ export default function PerformanceChart({ values, selectedParticipants, xMin, x
       },
     ],
     credits: { enabled: false },
+    responsive: {
+      rules: [{
+        condition: { maxWidth: 768 },
+        chartOptions: {
+          chart: { height: 320 },
+          xAxis: {
+            labels: { rotation: 45, y: 16 },
+            title: { margin: 16 },
+          },
+          yAxis: {
+            title: { margin: 24, style: { fontSize: '0.7rem' } },
+          },
+        },
+      }],
+    },
     plotOptions: {
       areaspline: {
         marker: { enabled: false },

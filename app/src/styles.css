@@ -224,12 +224,49 @@ body{
 }
 
 @media (max-width: 768px) {
+  body {
+    overflow: auto;
+  }
+
   .container{
-    margin:24px auto;
-    padding:24px;
+    height: auto;
+    min-height: 100vh;
+    margin:0;
+    padding:16px;
+    overflow: visible;
+  }
+
+  .app-shell {
+    height: auto;
+    min-height: 0;
+  }
+
+  .main-content {
+    flex: none;
+    overflow: visible;
+  }
+
+  .chart-wrapper {
+    flex: none;
+    height: 400px;
+    overflow: visible;
   }
 
   .hero-text h1{
     font-size:2.25rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search-row {
+    max-width: 100%;
+  }
+
+  .search-item {
+    min-width: 0 !important;
+    max-width: 100% !important;
   }
 }
