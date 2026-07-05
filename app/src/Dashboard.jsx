@@ -214,11 +214,6 @@ export default function Dashboard() {
         </header>
 
         <main className="main-content">
-          <SelectedParticipants
-            selectedParticipants={displayedParticipants}
-            onRemoveParticipant={handleRemoveParticipant}
-          />
-
           <div className="chart-wrapper">
             {loading ? (
               <div className="chart-loading">
@@ -228,6 +223,11 @@ export default function Dashboard() {
               <PerformanceChart values={timingValues} selectedParticipants={selectedParticipants} xMin={chartBounds.xMin} xMax={chartBounds.xMax} />
             )}
           </div>
+
+          <SelectedParticipants
+            selectedParticipants={displayedParticipants}
+            onRemoveParticipant={handleRemoveParticipant}
+          />
         </main>
 
         <footer className="app-footer">
