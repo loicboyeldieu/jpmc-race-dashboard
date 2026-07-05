@@ -270,8 +270,15 @@ body{
     gap: 6px;
   }
 
+  .hero-actions .ant-space {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+  }
+
   .hero-actions .ant-space-item {
     width: 100% !important;
+    max-width: 100% !important;
   }
 
   .search-row {
