@@ -1,11 +1,11 @@
 {
-  "name": "jp-morgan-analyser",
+  "name": "jpmc-race-dashboard",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "start": "node server/server.js",
     "dev": "vite",
-    "build": "vite build --outDir app/dist"
+    "build": "vite build"
   },
   "dependencies": {
     "express": "^4.18.2",

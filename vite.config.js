@@ -1,10 +1,10 @@
 import { defineConfig } from 'vite'
-import path from 'path'
 
 export default defineConfig({
-  root: path.resolve(__dirname, 'app'),
+  root: 'app',
+  base: '/',
   build: {
-    outDir: path.resolve(__dirname, 'app', 'dist'),
+    outDir: 'dist',
     emptyOutDir: true,
   },
   server: {
