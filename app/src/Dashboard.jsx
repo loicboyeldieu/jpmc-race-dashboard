@@ -1,9 +1,10 @@
 import React, { useEffect, useMemo, useState } from 'react'
-import { Space, Select, Tooltip, Spin } from 'antd'
+import { Space, Select, Tooltip, Spin, Button } from 'antd'
 import SearchPanel from './components/SearchPanel'
 import EventTags from './components/EventTags'
 import SelectedParticipants from './components/SelectedParticipants'
 import PerformanceChart from './components/PerformanceChart'
+import PodiumView from './components/PodiumView'
 import { fetchResultRows } from './api/resultsService'
 
 const EVENT_TAGS = [
@@ -30,6 +31,7 @@ export default function Dashboard() {
   const [genderFilter, setGenderFilter] = useState(undefined)
   const [ageFilter, setAgeFilter] = useState([])
   const [loading, setLoading] = useState(true)
+  const [showPodium, setShowPodium] = useState(false)
 
   useEffect(() => {
     setLoading(true)
@@ -149,6 +151,18 @@ export default function Dashboard() {
 
           <div className="hero-actions">
             <Space align="end" wrap size={16} style={{ width: '100%', justifyContent: 'flex-end' }}>
+              <div className="search-row search-item" style={{ minWidth: 100, maxWidth: 130 }}>
+                <Tooltip title={showPodium ? 'Show chart view' : 'Show top 10 men & women'}>
+                  <Button
+                    size="small"
+                    type={showPodium ? 'primary' : 'default'}
+                    onClick={() => setShowPodium((v) => !v)}
+                    style={{ width: '100%', fontSize: '0.82rem' }}
+                  >
+                    {showPodium ? 'Chart' : '🏆 Podium'}
+                  </Button>
+                </Tooltip>
+              </div>
               <div className="search-row search-item" style={{ minWidth: 140, maxWidth: 160 }}>
                 <Tooltip title="Filter by gender">
                   <Select
@@ -214,20 +228,32 @@ export default function Dashboard() {
         </header>
 
         <main className="main-content">
-          <div className="chart-wrapper">
-            {loading ? (
-              <div className="chart-loading">
-                <Spin size="large" />
+          {showPodium ? (
+            <div className="podium-scroll">
+              {loading ? (
+                <div className="chart-loading"><Spin size="large" /></div>
+              ) : (
+                <PodiumView participantRows={participantRows} />
+              )}
+            </div>
+          ) : (
+            <>
+              <div className="chart-wrapper">
+                {loading ? (
+                  <div className="chart-loading">
+                    <Spin size="large" />
+                  </div>
+                ) : (
+                  <PerformanceChart values={timingValues} selectedParticipants={selectedParticipants} xMin={chartBounds.xMin} xMax={chartBounds.xMax} />
+                )}
               </div>
-            ) : (
-              <PerformanceChart values={timingValues} selectedParticipants={selectedParticipants} xMin={chartBounds.xMin} xMax={chartBounds.xMax} />
-            )}
-          </div>
 
-          <SelectedParticipants
-            selectedParticipants={displayedParticipants}
-            onRemoveParticipant={handleRemoveParticipant}
-          />
+              <SelectedParticipants
+                selectedParticipants={displayedParticipants}
+                onRemoveParticipant={handleRemoveParticipant}
+              />
+            </>
+          )}
         </main>
 
         <footer className="app-footer">

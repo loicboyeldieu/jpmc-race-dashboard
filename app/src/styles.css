@@ -204,6 +204,52 @@ body{
   font-weight:600;
 }
 
+.podium-scroll {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  padding: 8px 0;
+}
+
+.podium-container {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.podium-section {
+  flex: 1 1 400px;
+  min-width: 280px;
+}
+
+.podium-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0 0 12px 0;
+  color: var(--text);
+}
+
+.podium-table .ant-table-thead > tr > th {
+  background: transparent;
+  border-bottom: 1px solid var(--border);
+  color: var(--muted);
+  font-weight: 600;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 8px 12px;
+}
+
+.podium-table .ant-table-tbody > tr > td {
+  border-bottom: 1px solid var(--border);
+  padding: 8px 12px;
+  font-size: 0.85rem;
+}
+
+.podium-table .ant-table-tbody > tr:hover > td {
+  background: rgba(44,62,80,0.03);
+}
+
 .app-footer {
   flex: 0 0 auto;
   text-align: center;
